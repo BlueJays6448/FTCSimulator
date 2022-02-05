@@ -8,5 +8,5 @@ FTC Simulator based on Webots
 5. Update the properties file in the controllers directory to point to the output directory from Android Studio and the OpMode class to use.
 6. Launch your Webots world.
 
-#Advanced
-To make your simulated robot as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.
+# Advanced
+To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.
