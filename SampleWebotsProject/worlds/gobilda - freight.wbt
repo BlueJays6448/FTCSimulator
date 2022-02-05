@@ -1,0 +1,48 @@
+#VRML_SIM R2021b utf8
+WorldInfo {
+  basicTimeStep 8
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation -0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        1.8, 0, 0.2
+      ]
+      frictionRotation 0.9648 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation 1 0 0 4.71238898038469
+  position 1.3442627385608057 7.103334746679889 -1.0393853674864675
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+GoBildaStrafer {
+  translation 1.403 0.105 -0.251
+  useRotationCorrection FALSE
+  rotationPID_P 0.2
+  rotationPID_D 0.01
+  rotation 0 1 0 1.57079
+  controller "FTCController"
+}
+
+FreightFrenzyArena {
+}

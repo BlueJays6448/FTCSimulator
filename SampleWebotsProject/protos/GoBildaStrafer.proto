@@ -1,0 +1,208 @@
+#VRML_SIM R2020a utf8
+# license: Copyright Cyberbotics Ltd. Licensed for use only with Webots.
+# license url: https://cyberbotics.com/webots_assets_license
+# omnidirectionnal wheels with 2D coulomb friction
+
+PROTO GoBildaStrafer [
+  field SFVec3f    translation     0 0.105 0      # Is `Transform.translation`.
+  unconnectedField  SFFloat    frontRightWheelExtraPower 0
+  unconnectedField  SFFloat    frontLeftWheelExtraPower 0
+  unconnectedField  SFFloat    backRightWheelExtraPower 0
+  unconnectedField  SFFloat    backLeftWheelExtraPower 0
+  
+  unconnectedField  SFBool     useRotationCorrection TRUE
+  unconnectedField  SFBool     useLateralCorrection TRUE
+  
+  unconnectedField  SFFloat    rotationPID_P 0.1
+  unconnectedField  SFFloat    rotationPID_I 0.01
+  unconnectedField  SFFloat    rotationPID_D 0
+   
+  field SFRotation rotation        1 0 0 0 # Is `Transform.rotation`.
+  field SFString   name            "GobildaStrafer"      # Is `Solid.name`.
+  field SFString   controller      ""      # Is `Robot.controller`.
+  field MFString    controllerArgs  []            # Is `Robot.controllerArgs`.
+  field SFString   customData      ""            # Is `Robot.customData`.
+  field SFBool     synchronization TRUE          # Is `Robot.synchronization`.
+  field MFNode     bodySlot        []            # Extends the robot with new nodes in the body slot.
+]
+{
+ 
+ Robot {
+  window "telemetry"
+  translation IS translation
+  rotation IS rotation
+  customData IS customData
+  supervisor TRUE
+  synchronization IS synchronization
+  name IS name
+  children [
+	Group {
+      children IS bodySlot
+    }
+	
+	
+	
+	Solid {
+	  translation 0 -0.055 -0.193
+	  children [
+		DEF LEFT_RAIL_WHEELS Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.2 0.048 0.048
+		  }
+		}
+	  ]
+	  name "LEFT_RAIL_WHEELS"
+	  boundingObject USE LEFT_RAIL_WHEELS
+	   physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	
+	
+	Solid {
+	  translation 0 -0.055 0.193
+	  children [
+		DEF RIGHT_RAIL_WHEELS Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.2 0.048 0.048
+		  }
+		}
+	  ]
+	  name "RIGHT_RAIL_WHEELS"
+	  boundingObject USE RIGHT_RAIL_WHEELS
+	   physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	
+	Solid {
+	  translation 0 -0.055 -0.144
+	  children [
+		DEF LEFT_RAIL Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.432 0.048 0.048
+		  }
+		}
+	  ]
+	  name "LEFT_RAIL"
+	  boundingObject USE LEFT_RAIL
+	   physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	Solid {
+	  translation -0.192 -0.055 0
+	  children [
+		DEF BACK_RAIL Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.048 0.048 0.24
+		  }
+		}
+	  ]
+	  name "BACK_RAIL"
+	  boundingObject USE BACK_RAIL
+	   physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	
+	Solid {
+	  translation -0.002 -0.055 0
+	  children [
+		DEF FRONT_RAIL Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.048 0.048 0.24
+		  }
+		}
+	  ]
+	  name "FRONT_RAIL"
+	  boundingObject USE FRONT_RAIL
+	   physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	Solid {
+	  translation 0 -0.055 0.144
+	  children [
+		DEF RIGHT_RAIL Shape {
+		  appearance PBRAppearance {
+			metalness 0.5
+		  }
+		  geometry Box {
+			size 0.432 0.048 0.048
+		  }
+		}
+	  ]
+	  name "RIGHT_RAIL"
+	  boundingObject USE RIGHT_RAIL
+	  physics Physics {
+        density -1
+        mass 0.1
+      }
+	}
+	
+	Transform  {
+		rotation -1 0 0 1.57079632679
+		children [
+			DEF FRONT_RIGHT_WHEEL InteriorWheel {
+			  translation 0.168 -0.205 -0.055 
+			  anchor 0.168 -0.205 -0.055
+			  name "frontRightWheel"
+			  sensorName "frontRightWheelSensor"
+			}
+			DEF FRONT_LEFT_WHEEL ExteriorWheel {
+			  translation 0.168 0.205 -0.055	 
+			  anchor 0.168 0.205 -0.055
+			  name "frontLeftWheel"
+			  sensorName "frontLeftWheelSensor"
+			}
+			DEF BACK_RIGHT_WHEEL ExteriorWheel {
+			  translation -0.168 -0.205 -0.055 
+			  anchor -0.168 -0.205 -0.055
+			  name "backRightWheel"
+			  sensorName "backRightWheelSensor"
+			}
+			DEF BACK_LEFT_WHEEL InteriorWheel {
+			  translation -0.168 0.205 -0.055 
+			  anchor -0.168 0.205 -0.055
+			  name "backLeftWheel"
+			  sensorName "backLeftWheelSensor"
+			}
+		]
+	}
+  ]
+  physics Physics {
+    density -1
+    mass 4.672
+    centerOfMass [
+      0 0 0
+    ]
+    inertiaMatrix [
+      0.166204 0.418086 0.55459
+      0 0 0
+    ]
+  }
+  controller IS controller
+  controllerArgs IS controllerArgs
+ }
+}

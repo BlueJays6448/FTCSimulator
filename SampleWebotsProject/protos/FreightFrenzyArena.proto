@@ -1,0 +1,36 @@
+
+PROTO FreightFrenzyArena [
+]
+{
+	 Group {
+        children [
+			RectangleArena {
+			  translation 1.8288 0 -1.8288
+			  floorSize 3.6576 3.6576
+			  floorTileSize 1.2192 1.2192
+			  wallThickness 1e-09
+			  wallHeight 0.3
+			}
+			
+			TapeBox{
+			
+			  translation 0.635 0 0
+			  name "BlueStorageUnit"
+			  color 0 0 1
+			}
+			
+
+			
+			TapeBox{
+			
+			  translation 2.4638 0 0
+			  name "RedStorageUnit"
+			  color 1 0 0
+			}
+		
+			
+			
+		]
+	}
+}
+

@@ -1,0 +1,72 @@
+
+PROTO TapeBox [
+  field SFVec3f translation 0 0 0
+  field SFString name "tapebox"
+  field SFColor  color 0 0 1
+]
+{
+	Solid {
+	
+		translation IS translation
+		name IS name 
+        children [
+		
+			Solid {
+			  translation 0 0 -0.305
+
+			  children [
+				Shape {
+				  appearance Appearance {
+					material Material {
+					  diffuseColor IS color
+					}
+				  }
+				  geometry Box {
+					size 0.0508 0.001 0.6096
+				  }
+				}
+			  ]
+			  name "tapeBox-1"
+			}
+			
+			Solid {
+			  translation 0.5588 0 -0.305
+			  children [
+				Shape {
+				  appearance Appearance {
+					material Material {
+					  diffuseColor IS color
+					}
+				  }
+				  geometry Box {
+					size 0.0508 0.001 0.6096
+				  }
+				}
+			  ]
+			  name "tapeBox-2"
+			}
+			Solid {
+			  translation 0.2796 0 -0.5842
+			  children [
+				Shape {
+				  appearance Appearance {
+					material Material {
+					  diffuseColor IS color
+					}
+				  }
+				  geometry Box {
+					size 0.6096 0.001 0.0508
+				  }
+				}
+			  ]
+			  name "tapeBox-3"
+			}
+			
+		]
+			
+			
+			
+		
+	}
+}
+
