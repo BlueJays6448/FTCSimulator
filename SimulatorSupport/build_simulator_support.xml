@@ -1,0 +1,32 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="buildSimSupportJar" default="main" basedir=".">
+    <description>
+        Creates the SimulatorSupport jar
+    </description>
+
+    <property name="projectName" value="buildSimSupportJar" />
+    <property name="bin.dir" location="bin" />
+    <property name="lib.dir" location="lib" />
+    <property name="dist.dir" location="controllers" />
+    <property name="jar" value="SimulatorSupport.jar" />
+
+    <target name="init">
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+
+    <!-- jar it, extract above dependency-all.jar and zip it with project files -->
+    <target name="jar" depends="init" >
+
+		<echo>Simulator Support file ${dist.dir}/${jar}</echo>
+
+        <jar destfile="${dist.dir}/${jar}"  basedir="${bin.dir}" >
+        	<include name="org/ftc6448/**" />
+        </jar>
+        
+
+    </target>
+
+    <!-- Default, run this -->
+    <target name="main" depends="jar" />
+
+</project>
