@@ -1,0 +1,33 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="buildWebotsJar" default="main" basedir=".">
+    <description>
+        Creates a Webots Controller Jar
+    </description>
+
+    <property name="projectName" value="buildWebotsJar" />
+    <property name="bin.dir" location="bin" />
+    <property name="lib.dir" location="lib" />
+    <property name="dist.dir" location="controllers/FTCController" />
+    <property name="jar" value="FTCController.jar" />
+
+    <target name="init">
+        <mkdir dir="${dist.dir}" />
+    </target>
+
+
+    <!-- jar it, extract above dependency-all.jar and zip it with project files -->
+    <target name="jar" depends="init" >
+
+		<echo>FTC Controller file ${dist.dir}/${jar}</echo>
+
+        <jar destfile="${dist.dir}/${jar}"  basedir="${bin.dir}" >
+            <zipfileset src="${lib.dir}/jamepad.jar" 
+                                excludes="META-INF/MANIFEST.MF" />
+        </jar>
+        
+
+    </target>
+
+    <!-- Default, run this -->
+    <target name="main" depends="jar" />
+
+</project>

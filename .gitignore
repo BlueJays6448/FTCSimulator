@@ -1,6 +1,9 @@
 # Compiled class file
 *.class
 
+#Eclipse bin folder
+bin/
+
 # Log file
 *.log
 
@@ -9,6 +12,9 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+#MAC files
+*.DS_Store
 
 # Package Files #
 *.jar
