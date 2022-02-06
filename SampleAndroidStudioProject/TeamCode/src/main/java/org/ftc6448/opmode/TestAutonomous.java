@@ -22,6 +22,9 @@ public class TestAutonomous extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
+        //use PlatformSupport method from SimulatorSupport.jar to get the time
+        //on robot, this maps to System.currentTimeMillis()
+        //in simulator, it maps to elapsed simulator time
         long startTime=PlatformSupport.getCurrentTimeMillis();
 
         DcMotor motor1 = hardwareMap.get(DcMotor.class, "frontRight");
@@ -31,8 +34,6 @@ public class TestAutonomous extends LinearOpMode {
 
         int frameCount=0;
         while (opModeIsActive()) {
-
-
             if (runtime.milliseconds()>5000) {
                 motor1.setPower(0);
                 motor2.setPower(0);
@@ -58,10 +59,9 @@ public class TestAutonomous extends LinearOpMode {
                 frameCount=0;
             }
 
+            //add telemetry.  to see telemetry in Webots, right click on your robot and select "Show Robot Window"
             telemetry.addData("FPS", "Loop speed - "+fps+" at elapsed time "+runtime.milliseconds());
-
             telemetry.update();
-
 
             //on the real robot, this method call does nothing
             //on the simulator, it forces the opmode to sync its loop

@@ -30,9 +30,6 @@ public class TestTeleOp extends OpMode {
     public void init() {
         telemetry.addData("Status", "Initialized");
 
-        // Tell the driver that initialization is complete.
-        telemetry.addData("Status", "Initialized");
-
         motor1 = hardwareMap.get(DcMotor.class, "frontRight");
         motor2 = hardwareMap.get(DcMotor.class, "frontLeft");
         motor3 = hardwareMap.get(DcMotor.class, "backRight");
@@ -64,6 +61,7 @@ public class TestTeleOp extends OpMode {
         double drive = -gamepad1.left_stick_y;
         double turn  = gamepad1.right_stick_x;
 
+        //use PlatformSupport method to see if you are running on the simulator
         if (PlatformSupport.isSimulator()) {
             //if your motors on the real robot were different than the simulator, this could reverse the direction
             drive=-drive;
@@ -74,7 +72,7 @@ public class TestTeleOp extends OpMode {
         motor3.setPower(drive);
         motor4.setPower(drive);
 
-        // Show the elapsed game time and wheel power.
+        //add telemetry.  to see telemetry in Webots, right click on your robot and select "Show Robot Window"
         telemetry.addData("Status", "Run Time: " + runtime.toString());
         telemetry.addData("Gamepad", "left_stick_y (%.2f), right_stick_x (%.2f)", drive, turn);
 
