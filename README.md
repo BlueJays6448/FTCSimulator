@@ -14,3 +14,6 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 
 # Important Note
 - The sample world is designed for Webots R2021b or earlier.  The coordinate system was changed with release R2022A, and the sample world is not compatible.  The sample world will be updated for the new coordinate system after the competition season.  Download R2021b from this link: https://github.com/cyberbotics/webots/releases/tag/R2021b
+
+# Example for Freight Frenzy
+<img width="1634" alt="Screen Shot" src="https://user-images.githubusercontent.com/55167736/153104696-272da409-3e2f-4e09-9f2d-b9f2734805db.png">
