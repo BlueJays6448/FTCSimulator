@@ -3,6 +3,8 @@ package org.ftc6448.simulator.webots;
 import org.ftc6448.utils.NumberUtils;
 
 import com.cyberbotics.webots.controller.Motor;
+import com.cyberbotics.webots.controller.PositionSensor;
+import com.github.javaparser.Position;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class WebotsServoImpl implements Servo {
@@ -68,17 +70,25 @@ public class WebotsServoImpl implements Servo {
 		double max=motor.getMaxPosition();
 		double min=motor.getMinPosition();
 
-		System.out.println(name+" input: "+position);
 		double scaledPos= NumberUtils.scale(position, 0, 1, min, max);
-		System.out.println(name+" scaled: "+Math.toDegrees(scaledPos)+" degrees");
 		double finalRadians=scaledPos+baseRotation;
-		System.out.println("Turning "+Math.toDegrees(finalRadians)+" degrees");
 		motor.setPosition(finalRadians);
 	}
 
 	@Override
 	public double getPosition() {
-		return motor.getTargetPosition();
+		PositionSensor sensor=motor.getPositionSensor();
+		if (sensor==null) {
+			System.out.println("No PositionSensor defined in joint for motor "+name);
+			return Double.NaN;
+		}
+		double radians= motor.getPositionSensor().getValue()-baseRotation;
+		double max=motor.getMaxPosition();
+		double min=motor.getMinPosition();
+			
+		double scaledPos=NumberUtils.scale(radians,min, max, 0, 1);
+
+		return scaledPos;
 	}
 
 	@Override

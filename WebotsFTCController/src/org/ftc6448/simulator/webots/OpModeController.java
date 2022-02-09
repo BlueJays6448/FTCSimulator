@@ -9,6 +9,7 @@ import com.cyberbotics.webots.controller.Device;
 import com.cyberbotics.webots.controller.GPS;
 import com.cyberbotics.webots.controller.Keyboard;
 import com.cyberbotics.webots.controller.Motor;
+import com.cyberbotics.webots.controller.PositionSensor;
 import com.cyberbotics.webots.controller.Supervisor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
@@ -74,6 +75,12 @@ public class OpModeController implements Controller {
 			if (device instanceof Motor) {
 				Motor motor=(Motor)device;
 				
+				//if there is an associated position sensor, enable it
+				PositionSensor sensor=motor.getPositionSensor();
+				if (sensor!=null) {
+					sensor.enable(timeStep);
+				}
+				
 				String mappedName=properties.getProperty(device.getName());
 				if (mappedName!=null) {
 					System.out.println("Loading webots motor " + device.getName()+" as "+mappedName);
@@ -112,6 +119,7 @@ public class OpModeController implements Controller {
 					hardwareMap.dcMotor.put(mappedName, webotsMotor);	
 				}
 			}		
+			
 			
 		}
 		
