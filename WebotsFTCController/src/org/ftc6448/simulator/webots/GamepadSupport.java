@@ -99,6 +99,11 @@ public class GamepadSupport {
 			gamepad1.b=currentState.b;
 			gamepad1.x=currentState.x;
 			gamepad1.y=currentState.y;
+			
+			gamepad1.dpad_left=currentState.dpadLeft;
+			gamepad1.dpad_right=currentState.dpadRight;
+			gamepad1.dpad_up=currentState.dpadUp;
+			gamepad1.dpad_down=currentState.dpadDown;
 		}
 		
 		if (gamepad2Controller!=null) {
@@ -112,6 +117,11 @@ public class GamepadSupport {
 			gamepad2.b=currentState.b;
 			gamepad2.x=currentState.x;
 			gamepad2.y=currentState.y;
+			
+			gamepad2.dpad_left=currentState.dpadLeft;
+			gamepad2.dpad_right=currentState.dpadRight;
+			gamepad2.dpad_up=currentState.dpadUp;
+			gamepad2.dpad_down=currentState.dpadDown;
 		}
 		
 	}

@@ -5,6 +5,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.CurrentUnit;
 import org.ftc6448.utils.NumberUtils;
 
 import com.cyberbotics.webots.controller.Motor;
+import com.cyberbotics.webots.controller.PositionSensor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.PIDCoefficients;
@@ -185,8 +186,13 @@ public class WebotsDcMotorImpl implements DcMotorEx{
 
 	@Override
 	public int getCurrentPosition() {
-		// TODO Auto-generated method stub
-		return 0;
+		PositionSensor sensor=motor.getPositionSensor();
+		if (sensor==null) {
+			System.out.println("No PositionSensor defined in joint for motor "+name);
+			return 0;
+		}
+		//need a mapping probably
+		return (int)sensor.getValue();
 	}
 
 	@Override

@@ -77,18 +77,8 @@ public class WebotsServoImpl implements Servo {
 
 	@Override
 	public double getPosition() {
-		PositionSensor sensor=motor.getPositionSensor();
-		if (sensor==null) {
-			System.out.println("No PositionSensor defined in joint for motor "+name);
-			return Double.NaN;
-		}
-		double radians= motor.getPositionSensor().getValue()-baseRotation;
-		double max=motor.getMaxPosition();
-		double min=motor.getMinPosition();
-			
-		double scaledPos=NumberUtils.scale(radians,min, max, 0, 1);
-
-		return scaledPos;
+		//Qualcomm does this, so do the same
+		return motor.getTargetPosition();
 	}
 
 	@Override
