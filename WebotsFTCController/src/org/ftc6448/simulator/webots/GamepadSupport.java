@@ -104,6 +104,9 @@ public class GamepadSupport {
 			gamepad1.dpad_right=currentState.dpadRight;
 			gamepad1.dpad_up=currentState.dpadUp;
 			gamepad1.dpad_down=currentState.dpadDown;
+			
+			gamepad1.left_trigger=currentState.leftTrigger;
+			gamepad1.right_trigger=currentState.rightTrigger;
 		}
 		
 		if (gamepad2Controller!=null) {
@@ -122,6 +125,9 @@ public class GamepadSupport {
 			gamepad2.dpad_right=currentState.dpadRight;
 			gamepad2.dpad_up=currentState.dpadUp;
 			gamepad2.dpad_down=currentState.dpadDown;
+			
+			gamepad2.left_trigger=currentState.leftTrigger;
+			gamepad2.right_trigger=currentState.rightTrigger;
 		}
 		
 	}
