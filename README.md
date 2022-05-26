@@ -9,8 +9,12 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 6. Launch your Webots world.
 
 # Advanced
-- To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.  The sample Android Studio project expects you to add SimulatorSupport.jar to the lib directory of your TeamCode.
+- To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.  
 - Use the properties file to map motors and convert Webots motors to Servos and Continuos Rotation Servos.
+
+# Sample Android Studio Project Setup
+- Download the SimulatorSupport.jar file from the release.  Add it to the lib directory of the TeamCode folder.
+- Download the ftc.debug.keystore file from the FTC Github project (https://github.com/FIRST-Tech-Challenge/FtcRobotController/tree/master/libs). Place this file inside the FtcRobotController/libs/ directory.
 
 # Important Note
 - The sample world is designed for Webots R2021b or earlier.  The coordinate system was changed with release R2022A, and the sample world is not compatible.  The sample world will be updated for the new coordinate system after the competition season.  Download R2021b from this link: https://github.com/cyberbotics/webots/releases/tag/R2021b
