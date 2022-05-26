@@ -9,7 +9,7 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 6. Launch your Webots world.
 
 # Advanced
-- To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.  The sample Android Studio expects this.
+- To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.  The sample Android Studio project expects you to add SimulatorSupport.jar to the lib directory of your TeamCode.
 - Use the properties file to map motors and convert Webots motors to Servos and Continuos Rotation Servos.
 
 # Important Note
