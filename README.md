@@ -8,12 +8,6 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 
 1. Download Webots from their [Github release](https://github.com/cyberbotics/webots/releases/tag/R2021b). The sample world we provide requires Webots 2021b or earlier and is not compatible with newer versions.
 2. Rename `simulation.properties.example` to `simulation.properties` and edit the file to add the full path to your Android Studio project.
-
-- Examples:
-    Windows: `classpath.1=C:/Users/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-    macOS: `classpath.1=/Users/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-    Linux: `classpath.1=/home/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-
 3. Open Webots and then open the sample world located at `SampleWebotsProject/worlds/gobilda - freight.wbt`.
 4. Profit.
 
@@ -24,12 +18,6 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 3. Download the sample webots project.
 4. Add the FTCController.jar to `SampleWebotsProject/controllers/FTCController`.
 5. Rename `simulation.properties.example` to `simulation.properties` and edit the file to add the full path to your Android Studio project.
-
-- Examples:
-    Windows: `classpath.1=C:/Users/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-    macOS: `classpath.1=/Users/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-    Linux: `classpath.1=/home/[username]/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes`
-
 6. Launch your Webots world.
 
 ## Advanced
