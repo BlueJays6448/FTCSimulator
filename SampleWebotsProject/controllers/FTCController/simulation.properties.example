@@ -1,0 +1,29 @@
+#mapping of webots device names to our device names
+frontLeftWheel=frontLeft
+frontRightWheel=frontRight
+backLeftWheel=backLeft
+backRightWheel=backRight
+
+
+#max power values for each motor
+frontLeftWheel.maxPower=15
+frontRightWheel.maxPower=15
+backLeftWheel.maxPower=15
+backRightWheel.maxPower=15
+
+
+#declare these so that the hardware map maps them as a Servo or CRServo
+duckServo.type=servo
+spoolServo.type=servousServo
+
+
+#declare these so that No-Op implementations are created for them (they don't exist in the Webots world)
+leftIntake.type=motor
+rightIntake.type=motor
+
+
+#tell the simulator where your class files exist
+classpath.1=C:/Users/<username>/FTCSimulator/SampleAndroidStudioProject/TeamCode/build/intermediates/javac/debug/classes
+
+#tell it the opmode to load
+opMode=org.ftc6448.opmode.TestAutonomous
