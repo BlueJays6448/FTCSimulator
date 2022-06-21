@@ -1,6 +1,6 @@
 # FTCSimulator
 
-This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit Blue Jays).  The FTC Simulator acts as a bridge between the Qualcomm API used by the FTC Android app and the Webots open source simulator.
+This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit Blue Jays).  The FTC Simulator acts as a bridge between the Qualcomm API used by the FTC Android app and the Webots open source simulator. You can find more information [here](https://docs.ftcsimulator.com/about/what-is-the-ftcsimulator).
 
 ## Getting Started With Webots
 
@@ -20,6 +20,8 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 5. Rename `simulation.properties.example` to `simulation.properties` and edit the file to add the full path to your Android Studio project.
 6. Launch your Webots world.
 
+You can find more information about getting started with Webots [here](https://docs.ftcsimulator.com/getting-started/getting-started-with-webots).
+
 ## Advanced
 
 - To make your simulated robot behave as close as possible to a real robot, add the SimulatorSupport.jar to your Android Studio project and use its methods to make the simulator behave similar to the real world.  
@@ -37,6 +39,8 @@ This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit
 
 1. Make sure that the configuration file points to the full path of the Android Studio project.
 2. Build the sample code.
+
+You can find more information about getting started with Android Studio [here](https://docs.ftcsimulator.com/getting-started/getting-started-with-android-studio).
 
 ## Important Note
 
