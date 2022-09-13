@@ -1,6 +1,14 @@
-# FTCSimulator
+<p align="center">
+  <img src="./WebotsFTCController/assets/logo.png">
+</p>
+<h1 align="center">FTCSimulator</h1>
 
-This is a simulator for First Tech Challenge robots created by Team 6448 (Jesuit Blue Jays).  The FTC Simulator acts as a bridge between the Qualcomm API used by the FTC Android app and the Webots open source simulator. You can find more information [here](https://docs.ftcsimulator.com/about/what-is-the-ftcsimulator).
+This is a cross-platform simulator for First Tech Challenge robots created by Team 6448 (Jesuit Blue Jays).  The FTC Simulator acts as a bridge between the Qualcomm API used by the FTC Android app and the Webots open source simulator. You can find more information on:
+<br>
+
+[FTCSimulator website](https://ftcsimulator.com) <br>
+
+[Documentation](https://docs.ftcsimulator.com)
 
 ## Getting Started With Webots
 
