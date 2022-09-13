@@ -1,3 +1,5 @@
+# This repository has moved to https://github.com/jesuitbluejays/FTCSimulator 
+
 <p align="center">
   <img src="./WebotsFTCController/assets/logo.png">
 </p>
