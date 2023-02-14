@@ -7,6 +7,7 @@ import org.ftc6448.simulator.PlatformSupport;
 
 import com.cyberbotics.webots.controller.Device;
 import com.cyberbotics.webots.controller.GPS;
+import com.cyberbotics.webots.controller.InertialUnit;
 import com.cyberbotics.webots.controller.Keyboard;
 import com.cyberbotics.webots.controller.Motor;
 import com.cyberbotics.webots.controller.PositionSensor;
@@ -59,12 +60,11 @@ public class OpModeController implements Controller {
 		opMode.internalPostInitLoop();
 	}
 	
-	
-
 	//this method iterates the Robot and the simulation properties file and sets up the hardware map
 	private void initializeDevices() {
 		final HardwareMap hardwareMap=new HardwareMap();
 		opMode.hardwareMap=hardwareMap;
+		
 		
 		//load all motors into the hardware motor map
 		for (int i=0;i<supervisor.getNumberOfDevices();i++) {
@@ -72,7 +72,14 @@ public class OpModeController implements Controller {
 			
 			System.out.println(device+" "+i);
 			
-			if (device instanceof Motor) {
+			if (device instanceof InertialUnit) {
+				//only one imu is supported
+				System.out.println(device+" is IMU");
+				InertialUnit imu=(InertialUnit)device;
+				imu.enable(timeStep);
+				hardwareMap.put("imu", new WebotsBNO055IMU(imu));
+			}
+			else if (device instanceof Motor) {
 				Motor motor=(Motor)device;
 				
 				//if there is an associated position sensor, enable it
@@ -103,6 +110,7 @@ public class OpModeController implements Controller {
 	    			servo.setBaseRotation(Float.parseFloat(baseRotation));
 	    			hardwareMap.put(mappedName, servo);
 	    		}
+				
 				else {
 					WebotsDcMotorImpl webotsMotor=new WebotsDcMotorImpl(mappedName,motor);
 					
@@ -133,11 +141,21 @@ public class OpModeController implements Controller {
 	    		if ("servo".equalsIgnoreCase(type)) {
 	    			webotsDevice=new WebotsServo();
 	    		}
-	    		else if ("continousServo".equalsIgnoreCase(type)) {
+	    		else if ("continuousServo".equalsIgnoreCase(type)) {
 	    			webotsDevice=new WebotsContinuousServo();
 	    		}
 	    		else if ("motor".equalsIgnoreCase(type)) {
 	    			webotsDevice=new WebotsDcMotor(device);
+	    		}
+	    		else if ("distance".equalsIgnoreCase(type)) {
+	    			webotsDevice=new WebotsDistanceSensor(device);
+	    		}
+	    		else if ("digitalChannel".equalsIgnoreCase(type)) {
+					//TODO: should this do something
+					WebotsDigitalChannel channel=new WebotsDigitalChannel(device);
+
+					System.out.println("Device "+device+" is a digital channel");
+	    			hardwareMap.put(device, channel);
 	    		}
 	    		if (webotsDevice!=null &&  !hardwareMap.hasDevice(device)) {
 	    			System.out.println("Adding empty "+type+" implementation for "+device);
@@ -193,8 +211,9 @@ public class OpModeController implements Controller {
 		else {
 			//TeleOp opmodes just loop and call the OpMode loop method along with the simulator step
 			System.out.println("Running OpMode");
+			boolean useKeyboard="true".equalsIgnoreCase(properties.getProperty("emulateGamepadsWithKeyboard"));
 			while (supervisor.step(timeStep) != -1) {
-				handleGamepads();
+				handleGamepads(useKeyboard);
 				opMode.loop();
 				opMode.internalPostLoop();
 
@@ -204,10 +223,9 @@ public class OpModeController implements Controller {
 		}
 	}
 
-	private void handleGamepads() {
-		boolean useGamepads=true;
+	private void handleGamepads(boolean useKeyboard) {
 		
-		if (useGamepads) {
+		if (!useKeyboard) {
 			gamepadSupport.processJoystick(opMode.gamepad1, opMode.gamepad2);
 		}
 		else {

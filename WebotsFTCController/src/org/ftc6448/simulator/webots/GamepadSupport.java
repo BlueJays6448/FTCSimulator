@@ -18,7 +18,7 @@ public class GamepadSupport {
 	public GamepadSupport(Properties properties,ControllerManager controllerManager) {
 		this.controllerManager=controllerManager;
 
-		String name=properties.getProperty("gamepad2");
+		String name=properties.getProperty("gamepad1");
 		gamepad1Controller=loadControllerIndex(controllerManager,name,true);
 		if (gamepad1Controller!=null) {
 			try {
@@ -54,8 +54,9 @@ public class GamepadSupport {
 	
 	private static ControllerIndex loadControllerIndex(ControllerManager controllerManager,String gamepadName,boolean gamepad1) {
 
+		int numControllers=controllerManager.getNumControllers();
+		System.out.println(numControllers+" controllers are connected");
 		if (gamepadName==null||gamepadName.trim().length()==0) {
-			int numControllers=controllerManager.getNumControllers();
 			if (gamepad1) {
 				if (numControllers>=1) {
 					return controllerManager.getControllerIndex(0);

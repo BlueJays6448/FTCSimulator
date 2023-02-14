@@ -21,4 +21,10 @@ public class NumberUtils {
 	    return (value >max) ?max : (value < min ? min: value );
 	}
 	
+
+	public static final double normalizeHeading(double angleDegrees) {
+		//make it positive via a multiple of 360 and then get remainder
+		return (angleDegrees+3600)%360; 
+	}
+
 }
